@@ -5,11 +5,12 @@ includes:
 * identd.user => /usr/local/etc/identd.user
 * irssi config: irssi/config => ~/.irssi/config
 
-installed identd via brew from: [https://github.com/alexbarton/homebrew-alex/blob/master/identd.rb](alexbarton/homebrew-alex)
+## Irssi Config
 
-> identd provides "authentication" for IRC and is easily spoofed.  the main reason it exists is to .. well nevermind.
-
-## irssi config
+- [Official Documentation](http://www.irssi.org/documentation/manual)
+- [Config Example](http://misc.nybergh.net/pub/irssi/config.example)
+- [Another Config Example](http://carina.org.uk/irssiconfig)
+- [IRSSI Config Generator](http://www.matthew.ath.cx/programs/irssiconfig)
 
 #### ~/.irssi/config
 
@@ -20,7 +21,20 @@ Linking irssi configuration:
 - `lns $DF/irc/irssi/config config`
 - `lns $DF/irc/scripts scripts`
 
-#### irssi plugins
+Adding an IRC Server:
+
+- `irssi` to open irssi
+- `/network add Freenode`
+
+#### ~/.irssi/startup
+
+> Put commands into ~/.irssi/startup file, each command on its own line.
+> The preceding slash (/) is not necessary.
+
+#### [Irssi Plugins](http://scripts.irssi.org/)
+
+- these are perl scripts downloaded into `$HOME/.irssi/scripts/`
+- to autorun a script when irssi starts - `cd $HOME/.irssi/scripts/autorun && ln -sv ../[script].pl`
 
 #### Authentication with SASL
 
@@ -39,6 +53,7 @@ Configuring cap_sasl.pl
   - I used pivotal-sprout, but my OSX 10.8 has perl 5.12.4.
   - Go [here](http://blog.jambura.com/2013/02/19/setup-homebrew-perlbrew-ruby-rvm-perl-cpanm-nginx-in-mountain-lion/) for issues installing perl.
   - `brew install cpanminus` - Install cpanm
+  - `brew install gmp` - resolves dependency for Math::BigInt::GMP
   - `cpanm Crypt::Blowfish Crypt::DH Crypt::OpenSSL::Bignum Math::BigInt Math::BigInt::FastCalc Math::BigInt::GMP` - Install required crypto modules
   - `cpanm` may need `sudo` on OSX.
 1. Linking cap_sasl.pl:
@@ -46,5 +61,17 @@ Configuring cap_sasl.pl
   - `wget http://www.freenode.net/sasl/cap_sasl.pl`
   - `cd autorun`
   - `ln -sv ../cap_sasl.pl`
+1. Configuring SASL Auth
+  - Open irssi
+  - `/sasl set [network] [user] [pass] [mechanism]`
+    - network =~ chat.freenode.net
+    - mechanism =~ PLAIN or DH-BLOWFISH (extra config required for DH-AES)
+  - `/sasl save` - saves to $HOME/.irssi/sasl.auth - not in source control!
 
 ## ident.d config
+
+> not really sure if i'll need ident.d config right now
+
+installed identd via brew from: [https://github.com/alexbarton/homebrew-alex/blob/master/identd.rb](alexbarton/homebrew-alex)
+
+> identd provides "authentication" for IRC and is easily spoofed.  the main reason it exists is to .. well nevermind.
