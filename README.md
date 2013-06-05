@@ -36,9 +36,17 @@ Adding an IRC Server:
 
 It's like emacs all over again lol
 
+The 2 most important commands:
+
+1. `/help`
+1. `/help [command]`
+
 #### [Irssi Keymap](http://irssi.org/beginner/#c9)
 
 Irssi can be configured with any key binding that the terminal forwards to the process.
+
+- M-1 - M-0: `/window goto [1-10]`
+- M-q - M-p: `/window goto [11-20]`
 
 #### [Irssi Plugins](http://scripts.irssi.org/)
 
@@ -50,6 +58,7 @@ Irssi can be configured with any key binding that the terminal forwards to the p
 - [cap_sasl.pl script](http://www.freenode.net/sasl/cap_sasl.pl)
 - [irssi & SASL config](http://freenode.net/sasl/sasl-irssi.shtml) at Freenode
 - [irssi & SASL install guide](http://www.andrews-corner.org/irssi.html)
+- [irssi & SASL on OSX](http://buffered.io/posts/irssi-and-sasl-on-osx)
 - [another irssi & SASL install guide](http://blog.freenode.net/2010/01/connecting-to-freenode-using-tor-sasl/)
 - [another cap_sasl.pl script](https://github.com/atheme/atheme/blob/master/contrib/cap_sasl.pl) with DH-AES.  hmmmm
 
