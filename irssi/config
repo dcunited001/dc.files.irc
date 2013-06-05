@@ -38,11 +38,11 @@ chatnets = {
 
 channels = (
   # Freenode 
-  { chatnet = "Freenode"; autojoin = "Yes"; name = "#ccnx" },
-  { chatnet = "Freenode"; autojoin = "Yes"; name = "#probablywrong" }, #http://wereprobablywrong.so/
-  { chatnet = "Freenode"; autojoin = "Yes"; name = "#ruby" },
-  { chatnet = "Freenode"; autojoin = "No"; name = "#rubyonrails" },
-  { chatnet = "Freenode"; autojoin = "No"; name = "#rails-contrib" },
+  { chatnet = "Freenode"; autojoin = "Yes"; name = "#ccnx"; },
+  { chatnet = "Freenode"; autojoin = "Yes"; name = "#probablywrong"; }, #http://wereprobablywrong.so/
+  { chatnet = "Freenode"; autojoin = "Yes"; name = "#ruby"; },
+  { chatnet = "Freenode"; autojoin = "No"; name = "#rubyonrails"; },
+  { chatnet = "Freenode"; autojoin = "No"; name = "#rails-contrib"; },
   
   # EFNet
   # CJDNS channel
