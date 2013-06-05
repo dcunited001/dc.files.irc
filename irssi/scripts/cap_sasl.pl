@@ -1,5 +1,7 @@
 use strict;
 use Irssi;
+use Irssi::Irc;
+
 use vars qw($VERSION %IRSSI);
 # $Id$
 
