@@ -25,6 +25,7 @@ Adding an IRC Server:
 
 - `irssi` to open irssi
 - `/network add Freenode`
+- `/server add -auto -ssl -ssl_verify -network Freenode chat.freenode.net 6667`
 
 #### ~/.irssi/startup
 
@@ -39,6 +40,7 @@ Adding an IRC Server:
 #### Authentication with SASL
 
 - [cap_sasl.pl script](http://www.freenode.net/sasl/cap_sasl.pl)
+- [irssi & SASL config](http://freenode.net/sasl/sasl-irssi.shtml) at Freenode
 - [irssi & SASL install guide](http://www.andrews-corner.org/irssi.html)
 - [another irssi & SASL install guide](http://blog.freenode.net/2010/01/connecting-to-freenode-using-tor-sasl/)
 - [another cap_sasl.pl script](https://github.com/atheme/atheme/blob/master/contrib/cap_sasl.pl) with DH-AES.  hmmmm
