@@ -1,37 +1,111 @@
 servers = (
 
-  { address = "chat.freenode.net"; chatnet = "Freenode";  port = "6667"; autoconnect = "yes"; },
-  { address = "irc.efnet.org";     chatnet = "EFNet";     port = "6667"; },
+  {
+    address = "chat.freenode.net";
+    chatnet = "Freenode";
+    port = "6667";
+    autoconnect = "yes";
+  },
+  { address = "irc.efnet.org"; chatnet = "EFNet"; port = "6667"; },
 
-  { address = "eu.irc6.net";       chatnet = "IRCnet";    port = "6667"; },
-  { address = "open.ircnet.net";   chatnet = "IRCnet";    port = "6667"; },
-  { address = "irc.undernet.org";  chatnet = "Undernet";  port = "6667"; },
-  { address = "irc.dal.net";       chatnet = "DALnet";    port = "6667"; },
-  { address = "irc.quakenet.org";  chatnet = "QuakeNet";  port = "6667"; },
-  { address = "irc.oftc.net";      chatnet = "OFTC";      port = "6667"; },
-  { address = "irc.gamesurge.net"; chatnet = "GameSurge"; port = "6667"; },
-  { address = "irc.webchat.org";   chatnet = "WebChat";   port = "6667"; },
-  { address = "irc.rizon.net";     chatnet = "Rizon";     port = "6667"; },
-  { address = "irc.link-net.org";  chatnet = "LinkNet";   port = "6667"; },
+  { address = "eu.irc6.net"; chatnet = "IRCnet"; port = "6667"; },
+  { address = "open.ircnet.net"; chatnet = "IRCnet"; port = "6667"; },
+  { 
+    address = "irc.undernet.org";
+    chatnet = "Undernet";
+    port = "6667";
+  },
+  { address = "irc.dal.net"; chatnet = "DALnet"; port = "6667"; },
+  { 
+    address = "irc.quakenet.org";
+    chatnet = "QuakeNet";
+    port = "6667";
+  },
+  { address = "irc.oftc.net"; chatnet = "OFTC"; port = "6667"; },
+  {
+    address = "irc.gamesurge.net";
+    chatnet = "GameSurge";
+    port = "6667";
+  },
+  { address = "irc.webchat.org"; chatnet = "WebChat"; port = "6667"; },
+  { address = "irc.rizon.net"; chatnet = "Rizon"; port = "6667"; },
+  { address = "irc.link-net.org"; chatnet = "LinkNet"; port = "6667"; },
 
-  { address = "silc.silcnet.org";  chatnet = "SILC";      port = "706"; }  
+  { address = "silc.silcnet.org"; chatnet = "SILC"; port = "706"; },
 
 );
 
 chatnets = {
 
-  Freenode = { type = "IRC"; max_kicks = "4"; max_msgs = "5"; max_whois = "4"; max_query_chans = "5"; };
-  EFNet =    { type = "IRC"; max_kicks = "4"; max_msgs = "3"; max_whois = "1"; };
+  Freenode = {
+    type = "IRC";
+    max_kicks = "4";
+    max_msgs = "5";
+    max_whois = "4";
+    max_query_chans = "5";
+  };
+  EFNet = { 
+    type = "IRC";
+    max_kicks = "4";
+    max_msgs = "3";
+    max_whois = "1";
+  };
 
-  IRCnet =    { type = "IRC"; max_kicks = "4"; max_msgs = "5"; max_whois = "4"; max_query_chans = "5"; };
-  Undernet =  { type = "IRC"; max_kicks = "1"; max_msgs = "3"; max_whois = "30"; };
-  DALnet =    { type = "IRC"; max_kicks = "4"; max_msgs = "3"; max_whois = "30"; };
-  QuakeNet =  { type = "IRC"; max_kicks = "1"; max_msgs = "3"; max_whois = "30"; };
-  OFTC =      { type = "IRC"; max_kicks = "1"; max_msgs = "3"; max_whois = "30"; };
-  GameSurge = { type = "IRC"; max_kicks = "1"; max_msgs = "3"; max_whois = "30"; };
-  WebChat =   { type = "IRC"; max_kicks = "1"; max_msgs = "3"; max_whois = "30"; };
-  Rizon =     { type = "IRC"; max_kicks = "1"; max_msgs = "3"; max_whois = "30"; };
-  LinkNet =   { type = "IRC"; max_kicks = "1"; max_msgs = "3"; max_whois = "30"; };
+  IRCnet = {
+    type = "IRC";
+    max_kicks = "4";
+    max_msgs = "5";
+    max_whois = "4";
+    max_query_chans = "5";
+  };
+  Undernet = {
+    type = "IRC";
+    max_kicks = "1";
+    max_msgs = "3";
+    max_whois = "30";
+  };
+  DALnet = {
+    type = "IRC";
+    max_kicks = "4";
+    max_msgs = "3";
+    max_whois = "30";
+  };
+  QuakeNet = {
+    type = "IRC";
+    max_kicks = "1";
+    max_msgs = "3";
+    max_whois = "30";
+  };
+  OFTC = { 
+    type = "IRC";
+    max_kicks = "1";
+    max_msgs = "3";
+    max_whois = "30";
+  };
+  GameSurge = {
+    type = "IRC";
+    max_kicks = "1";
+    max_msgs = "3";
+    max_whois = "30";
+  };
+  WebChat = {
+    type = "IRC";
+    max_kicks = "1";
+    max_msgs = "3";
+    max_whois = "30";
+  };
+  Rizon = { 
+    type = "IRC";
+    max_kicks = "1";
+    max_msgs = "3";
+    max_whois = "30";
+  };
+  LinkNet = {
+    type = "IRC";
+    max_kicks = "1";
+    max_msgs = "3";
+    max_whois = "30";
+  };
 
   SILC = { type = "SILC"; };
 };
@@ -39,11 +113,12 @@ chatnets = {
 channels = (
   # Freenode 
   { chatnet = "Freenode"; autojoin = "Yes"; name = "#ccnx"; },
-  { chatnet = "Freenode"; autojoin = "Yes"; name = "#probablywrong"; }, #http://wereprobablywrong.so/
-  { chatnet = "Freenode"; autojoin = "Yes"; name = "#ruby"; },
+  { chatnet = "Freenode"; autojoin = "No"; name = "#probablywrong"; },
+  #http://wereprobablywrong.so/
+  { chatnet = "Freenode"; autojoin = "No"; name = "#ruby"; },
   { chatnet = "Freenode"; autojoin = "No"; name = "#rubyonrails"; },
   { chatnet = "Freenode"; autojoin = "No"; name = "#rails-contrib"; },
-  
+
   # EFNet
   # CJDNS channel
 
@@ -216,6 +291,11 @@ statusbar = {
   };
 };
 settings = {
-  core = { real_name = "David Conner"; user_name = "dcunit3d"; nick = "dcunit3d"; };
-  "fe-text" = { actlist_sort = "refnum"; };
+  core = {
+    real_name = "David Conner";
+    user_name = "dcunit3d";
+    nick = "dcunit3d";
+  };
+  "fe-text" = { actlist_sort = "refnum"; term_force_colors = "yes"; };
 };
+hilights = ( { text = "nick"; nick = "yes"; word = "yes"; } );
