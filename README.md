@@ -32,6 +32,14 @@ Adding an IRC Server:
 > Put commands into ~/.irssi/startup file, each command on its own line.
 > The preceding slash (/) is not necessary.
 
+#### [Irssi Basics](http://irssi.org/beginner/)
+
+It's like emacs all over again lol
+
+#### [Irssi Keymap](http://irssi.org/beginner/#c9)
+
+Irssi can be configured with any key binding that the terminal forwards to the process.
+
 #### [Irssi Plugins](http://scripts.irssi.org/)
 
 - these are perl scripts downloaded into `$HOME/.irssi/scripts/`
