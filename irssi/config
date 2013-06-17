@@ -113,12 +113,12 @@ chatnets = {
 channels = (
   # Freenode 
   { chatnet = "Freenode"; autojoin = "Yes"; name = "#ccnx"; },
-  { chatnet = "Freenode"; autojoin = "No"; name = "#probablywrong"; },
-  #http://wereprobablywrong.so/
-  { chatnet = "Freenode"; autojoin = "No"; name = "#ruby"; },
+  { chatnet = "Freenode"; autojoin = "Yes"; name = "#probablywrong"; },
+  { chatnet = "Freenode"; autojoin = "Yes"; name = "#ruby"; },
   { chatnet = "Freenode"; autojoin = "No"; name = "#rubyonrails"; },
   { chatnet = "Freenode"; autojoin = "No"; name = "#rails-contrib"; },
-
+  { chatnet = "Freenode"; autojoin = "Yes"; name = "#openframeworks"; },
+  { chatnet = "Freenode"; autojoin = "Yes"; name = "#denofclojure"; },
   # EFNet
   # CJDNS channel
 
