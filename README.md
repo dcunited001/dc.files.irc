@@ -11,6 +11,8 @@ includes:
 
 - [Weechat FAQ](https://weechat.org/files/doc/weechat_faq.en.html)A
 - [Config Guide](/etc/ssl/certs/ca-certificates.crt)
+- [Weechat on OSX](http://aaronfranks.com/posts/weechat-on-osx/)
+- [More info on Freenode, SSL & SASL](https://pthree.org/2010/01/31/freenode-ssl-and-sasl-authentication-with-irssi/)
 
 ### Weechat Sec Config
 
@@ -18,12 +20,8 @@ Weechat's `sec.conf` should not be stored in the repo.  Use `/secure ...` comman
 
 ### Weechat SSL Config
 
-You'll need the following configuration changes:
+You'll need the following configuration changes ... on second thought, just read Aaron Frank's post on [Weechat Config in OSX](http://aaronfranks.com/posts/weechat-on-osx/).  And refer to this post on [IRC, Freenode, SSL & SASL](https://pthree.org/2010/01/31/freenode-ssl-and-sasl-authentication-with-irssi/) if you need more infoz.
 
-```
-/set irc.server.freenode.ssl on
-/set irc.server.
-```
 
 I'm kind of frustrated that I'm expected to use older versions of TLS/SSL & that I'm expected to use `%COMPAT`, *which may allow downgrade attacks.*  All in all though, at least using SSL and SASL makes it quite a bit harder to manipulate traffic.
 
