@@ -13,6 +13,7 @@ includes:
 - [Config Guide](/etc/ssl/certs/ca-certificates.crt)
 - [Weechat on OSX](http://aaronfranks.com/posts/weechat-on-osx/)
 - [More info on Freenode, SSL & SASL](https://pthree.org/2010/01/31/freenode-ssl-and-sasl-authentication-with-irssi/)
+- [Installing curl-ca-bundle on OSX](https://gist.github.com/1stvamp/2158128) (some sources say curl-ca-bundle isn't necessary anymore on OSX)
 
 ### Weechat Sec Config
 
