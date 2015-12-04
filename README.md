@@ -12,7 +12,31 @@ includes:
 - [Weechat FAQ](https://weechat.org/files/doc/weechat_faq.en.html)A
 - [Config Guide](/etc/ssl/certs/ca-certificates.crt)
 
+### Weechat Sec Config
+
+Weechat's `sec.conf` should not be stored in the repo.  Use `/secure ...` command to add to weechat's secure config.  These options can be accessed within other `*.conf` files using `"${irc.config.key}"`
+
 ### Weechat SSL Config
+
+You'll need the following configuration changes:
+
+```
+/set irc.server.freenode.ssl on
+/set irc.server.
+```
+
+I'm kind of frustrated that I'm expected to use older versions of TLS/SSL & that I'm expected to use `%COMPAT`, *which may allow downgrade attacks.*  All in all though, at least using SSL and SASL makes it quite a bit harder to manipulate traffic.
+
+This reference provides more info on [SSL Priority Strings](http://gnutls.org/manual/html_node/Priority-Strings.html).
+
+```
+# This command should not require %COMPAT
+# - it allows server client to renegotiate TLS connection details!
+/set irc.server.xxx.ssl_priorities "NORMAL:-VERS-TLS-ALL:+VERS-TLS1.0:+VERS-SSL3.0:%COMPAT"
+
+# This is what i'd prefer to use
+/set irc.server.xxx.ssl_priorities "NORMAL:-VERS-TLS-ALL:+VERS-TLS1.2:+VERS-TLS1.3"
+```
 
 On OSX configuration, you need to download a certificate authority PEM file.  A freely available file is [here](http://curl.haxx.se/docs/caextract.html).  This will need to be added to your system.  The default location is `/etc/ssl/certs/ca-certificates.crt`, but this file does not exist on OSX.  You'll need to add the PEM file you downloaded to your system.
 
@@ -22,11 +46,12 @@ You can choose an alternative location for a PEM file with the following Weechat
 /set weechat.network.gnutls_ca_file "/etc/ssl/certs/ca-certificates.crt"
 ```
 
-### Weechat Sec Config
+### Weechat SASL configuration
 
-Weechat's `sec.conf` should not be stored in the repo.  Use `/secure ...` command to add to weechat's secure config.  These options can be accessed within other `*.conf` files using `"${irc.config.key}"`
+SASL should be used for additional security.  I'll update this when I've configured it for weechat.
 
 # Irssi
+
 
 - [Official Documentation](http://www.irssi.org/documentation/manual)
 - [Config Example](http://misc.nybergh.net/pub/irssi/config.example)
