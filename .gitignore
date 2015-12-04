@@ -1,2 +1,4 @@
-./weechat/sec.conf
+weechat/sec.conf
+weechat/*.log
+weechat/logs/*
 
