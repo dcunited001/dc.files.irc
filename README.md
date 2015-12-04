@@ -5,7 +5,28 @@ includes:
 * identd.user => /usr/local/etc/identd.user
 * irssi config: irssi/config => ~/.irssi/config
 
-## Irssi Config
+# Weechat
+
+### Weechat Links
+
+- [Weechat FAQ](https://weechat.org/files/doc/weechat_faq.en.html)A
+- [Config Guide](/etc/ssl/certs/ca-certificates.crt)
+
+### Weechat SSL Config
+
+On OSX configuration, you need to download a certificate authority PEM file.  A freely available file is [here](http://curl.haxx.se/docs/caextract.html).  This will need to be added to your system.  The default location is `/etc/ssl/certs/ca-certificates.crt`, but this file does not exist on OSX.  You'll need to add the PEM file you downloaded to your system.
+
+You can choose an alternative location for a PEM file with the following Weechat config command.
+
+```
+/set weechat.network.gnutls_ca_file "/etc/ssl/certs/ca-certificates.crt"
+```
+
+### Weechat Sec Config
+
+Weechat's `sec.conf` should not be stored in the repo.  Use `/secure ...` command to add to weechat's secure config.  These options can be accessed within other `*.conf` files using `"${irc.config.key}"`
+
+# Irssi
 
 - [Official Documentation](http://www.irssi.org/documentation/manual)
 - [Config Example](http://misc.nybergh.net/pub/irssi/config.example)
