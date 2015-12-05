@@ -1,16 +1,12 @@
 servers = (
-
-  {
+  { address = "eu.irc6.net"; chatnet = "IRCnet"; port = "6667"; },
+  { address = "open.ircnet.net"; chatnet = "IRCnet"; port = "6667"; },
+  { 
     address = "chat.freenode.net";
     chatnet = "Freenode";
     port = "6667";
-    autoconnect = "yes";
   },
   { address = "irc.efnet.org"; chatnet = "EFNet"; port = "6667"; },
-
-  { address = "eu.irc6.net"; chatnet = "IRCnet"; port = "6667"; },
-  { address = "open.ircnet.net"; chatnet = "IRCnet"; port = "6667"; },
-  { address = "irc.snoonet.org"; chatnett = "SnooNet"; port = "6667"; },
   { 
     address = "irc.undernet.org";
     chatnet = "Undernet";
@@ -31,22 +27,11 @@ servers = (
   { address = "irc.webchat.org"; chatnet = "WebChat"; port = "6667"; },
   { address = "irc.rizon.net"; chatnet = "Rizon"; port = "6667"; },
   { address = "irc.link-net.org"; chatnet = "LinkNet"; port = "6667"; },
-
-  { address = "silc.silcnet.org"; chatnet = "SILC"; port = "706"; },
-
+  { address = "silc.silcnet.org"; chatnet = "SILC"; port = "706"; }
 );
 
 chatnets = {
-
-  SnooNet = {
-    type = "IRC";
-    max_kicks = "4";
-    max_msgs = "5";
-    max_whois = "4";
-    max_query_chans = "5";
-  };
- 
-  Freenode = {
+  IRCnet = {
     type = "IRC";
     max_kicks = "4";
     max_msgs = "5";
@@ -59,13 +44,11 @@ chatnets = {
     max_msgs = "3";
     max_whois = "1";
   };
-
-  IRCnet = {
+  Freenode = {
     type = "IRC";
-    max_kicks = "4";
-    max_msgs = "5";
-    max_whois = "4";
-    max_query_chans = "5";
+    max_kicks = "1";
+    max_msgs = "4";
+    max_whois = "1";
   };
   Undernet = {
     type = "IRC";
@@ -115,26 +98,11 @@ chatnets = {
     max_msgs = "3";
     max_whois = "30";
   };
-
   SILC = { type = "SILC"; };
 };
 
 channels = (
-  # Freenode 
-  { chatnet = "Freenode"; autojoin = "Yes"; name = "#clojure"; },
-  { chatnet = "Freenode"; autojoin = "Yes"; name = "#denofclojure"; },
-  #{ chatnet = "Freenode"; autojoin = "Yes"; name = "#ccnx"; },
-  { chatnet = "Freenode"; autojoin = "Yes"; name = "#ruby"; },
-  { chatnet = "Freenode"; autojoin = "No"; name = "#rubyonrails"; },
-  { chatnet = "Freenode"; autojoin = "No"; name = "#rails-contrib"; },
-  { chatnet = "Freenode"; autojoin = "Yes"; name = "#openframeworks"; },
-  # EFNet
-  # CJDNS channel
-
-  # IRCnet
   { name = "#irssi"; chatnet = "ircnet"; autojoin = "No"; },
-
-  # SILC ??
   { name = "silc"; chatnet = "silc"; autojoin = "No"; }
 );
 
@@ -299,13 +267,7 @@ statusbar = {
     };
   };
 };
-
 settings = {
-  core = {
-    real_name = "David Conner";
-    user_name = "dcunit3d";
-    nick = "dcunit3d";
-  };
-  "fe-text" = { actlist_sort = "refnum"; term_force_colors = "yes"; };
+  core = { real_name = "David Conner"; user_name = "dc"; nick = "dc"; };
+  "fe-text" = { actlist_sort = "refnum"; };
 };
-hilights = ( { text = "nick"; nick = "yes"; word = "yes"; } );
