@@ -5,7 +5,7 @@
 # - i'll maybe add back plugins/scripts soon (i'm too paranoid for this)
 # - mostly just needed more functional layouts.  & colors, mostly colors.
 
-#/set irc.server_default.nicks 
+#/set irc.server_default.nicks dcunit3d
 #/set irc.server_default.ssl_verify off #nahhh dood.  keep it, and sasl.
 #/set irc.server_default.capabilities "znc.in/server-time-iso"
 
@@ -23,6 +23,14 @@
 # urlserver.py: ? what is this?
 # iset .. idont know what it is
 # pushover.pl 
+
+# ok, these are "essential" apparently
+/script install buffers.pl
+/script autoload buffers.pl
+/script install iset.pl
+/script autoload iset.pl
+/script install highmon.pl
+/script autoload highmon.pl
 
 # [ IRC config ]==========================
 
@@ -78,6 +86,13 @@
 /set weechat.color.status_name 121
 /set weechat.color.status_name_ssl 121
 
+# [ Filters ] ===============
+# only see leave/join/disconnect messages from users who have recently spoken on a channel
+/set irc.look.smart_filter on
+/set irc.look.smart_filter_delay 15
+/filter add irc_smart * irc_smart_filter *
+/filter add rt irc.BitlBee.#quebec * ^\[.*\]\sRT\s
+
 # [ Layouts ] ===============
 
 # ===[ Layout: Main ]========
@@ -108,6 +123,38 @@
 #/window splitv 78
 #/buffer exec.conky
 #/layout store news-conky
+
+# [ Keyboard Shortcuts ]========
+
+# need to bind meta2 (i can probably do that in linux)
+#/key bind meta-meta2-A /bar scroll nicklist * -100%
+#/key bind meta-meta2-B /bar scroll nicklist * +100%
+#/key bind meta2-A /input history_global_previous
+#/key bind meta2-B /input history_global_next
+
+# mouseclick on buffers
+/key bindctxt cursor @item(buffers):h /command -buffer ${full_name} irc /allchan -current buffer hide;/command -buffer ${full_name} irc /allpv -current buffer hide;/cursor stop
+
+# mouseclick on buffers 
+/key bindctxt cursor @item(buffers):H /command -buffer ${full_name} irc /allchan -current buffer unhide;/command -buffer ${full_name} irc /allpv -current buffer unhide;/cursor stop
+
+
+/key bindctxt cursor @item(buffer_nicklist):s /window ${_window_number};/me slaps ${nick} around a bit with a large trout
+
+# buffer_nicklist cursor shortcuts for adding mods, etc
+/key bindctxt cursor @item(buffer_nicklist):v /window ${_window_number};/voice ${nick}
+/key bindctxt cursor @item(buffer_nicklist):o /window ${_window_number};/op ${nick}
+/key bindctxt cursor @item(buffer_nicklist):V /window ${_window_number};/devoice ${nick}
+/key bindctxt cursor @item(buffer_nicklist):O /window ${_window_number};/deop ${nick}
+
+# add trigger for nicklist user
+#/key bindctxt cursor @item(buffer_nicklist):f /window ${_window_number};/trigger add female_${nick} modifier weechat_print "\${tg_tags} =~ ,irc_privmsg, && \${tg_tag_nick} == ${nick} && \${tg_buffer} !~ perl.highmon" "/(.*)/\${tg_prefix}\t\${color:219}\${tg_message}/" "";/cursor stop
+
+# add trigger for nicklist user
+#/key bindctxt cursor @item(buffer_nicklist):m /window ${_window_number};/trigger add male_${nick} modifier weechat_print "\${tg_tags} =~ ,irc_privmsg, && \${tg_tag_nick} == ${nick} && \${tg_buffer} !~ perl.highmon" "/(.*)/\${tg_prefix}\t\${color:45}\${tg_message}/" "";/cursor stop
+
+# add trigger for bot
+#/key bindctxt cursor @item(buffer_nicklist):r /window ${_window_number};/trigger add bot_${nick} modifier weechat_print "\${tg_tags} =~ ,irc_privmsg, && \${tg_tag_nick} == ${nick} && \${tg_buffer} !~ perl.highmon" "/(.*)/\${tg_prefix}\t\${color:208}\${tg_message_nocolor}/" "";/cursor stop
 
 # [ Theme ]========
 
@@ -200,20 +247,20 @@
 
 
 # Highlight
-/set weechat.look.highlight_regex .*pascalpoitras.*
-/autosetbuffer add irc.BitlBee.#twitter_pascalpoitras* highlight_regex .*weechat.*
-/autosetbuffer add irc.BitlBee.#twitter_pascalpoitras* highlight_words tor,freenode,snoonet
-/autosetbuffer add irc.BitlBee.#LET highlight_regex .*
-/autosetbuffer add irc.freenode.##news highlight_regex .*weechat.*
-/autosetbuffer add irc.freenode.##news highlight_words tor
-/autosetbuffer add irc.freenode.##reddit-hockey highlight_regex (^GOAL: MTL.*|^Le But: MTL.*)
+#/set weechat.look.highlight_regex .*dcunit3d.*
+#/autosetbuffer add irc.BitlBee.#twitter_pascalpoitras* highlight_regex .*weechat.*
+#/autosetbuffer add irc.BitlBee.#twitter_pascalpoitras* highlight_words tor,freenode,snoonet
+#/autosetbuffer add irc.BitlBee.#LET highlight_regex .*
+#/autosetbuffer add irc.freenode.##news highlight_regex .*weechat.*
+#/autosetbuffer add irc.freenode.##news highlight_words tor
+#/autosetbuffer add irc.freenode.##reddit-hockey highlight_regex (^GOAL: MTL.*|^Le But: MTL.*)
 
 
 
 # ===[ TODO: FINISH REVIEWING CONFIG (NO TIME) ]============
 
 # Triggers
-
+# Review triggers
 
 /trigger addreplace beep_highlight print "" "${tg_highlight}" "" "/exec -bg beep -f 500 -r 2" "ok"
 /trigger addreplace beep_pv print "" "${tg_msg_pv}" "" "/exec -bg beep -f 3000 -r 3" "ok"
@@ -230,31 +277,9 @@
 /trigger addreplace keep_nick signal "irc_notify_quit" "${tg_signal_data} == UnderNet,stallman" "" "/command -buffer irc.server.UnderNet irc /nick Stallman" "ok"
 
 
-# Keys
-
-
-/key bindctxt cursor @item(buffer_nicklist):v /window ${_window_number};/voice ${nick}
-/key bindctxt cursor @item(buffer_nicklist):o /window ${_window_number};/op ${nick}
-/key bindctxt cursor @item(buffer_nicklist):V /window ${_window_number};/devoice ${nick}
-/key bindctxt cursor @item(buffer_nicklist):O /window ${_window_number};/deop ${nick}
-/key bindctxt cursor @item(buffer_nicklist):s /window ${_window_number};/me slaps ${nick} around a bit with a large trout
-/key bindctxt cursor @item(buffer_nicklist):f /window ${_window_number};/trigger add female_${nick} modifier weechat_print "\${tg_tags} =~ ,irc_privmsg, && \${tg_tag_nick} == ${nick} && \${tg_buffer} !~ perl.highmon" "/(.*)/\${tg_prefix}\t\${color:219}\${tg_message}/" "";/cursor stop
-/key bindctxt cursor @item(buffer_nicklist):m /window ${_window_number};/trigger add male_${nick} modifier weechat_print "\${tg_tags} =~ ,irc_privmsg, && \${tg_tag_nick} == ${nick} && \${tg_buffer} !~ perl.highmon" "/(.*)/\${tg_prefix}\t\${color:45}\${tg_message}/" "";/cursor stop
-/key bindctxt cursor @item(buffer_nicklist):r /window ${_window_number};/trigger add bot_${nick} modifier weechat_print "\${tg_tags} =~ ,irc_privmsg, && \${tg_tag_nick} == ${nick} && \${tg_buffer} !~ perl.highmon" "/(.*)/\${tg_prefix}\t\${color:208}\${tg_message_nocolor}/" "";/cursor stop
+# no perl exec
 /key bindctxt cursor @item(buffer_nicklist):B /window ${_window_number};/who ${chan};/wait 2s /perlexec my $infolist=weechat::infolist_get("irc_nick", "", '${server},${channel},${nick}')\;weechat::infolist_next($infolist)\;my $hostname = (split("@", weechat::infolist_string($infolist, "host")))[1]\;weechat::command("", ('${server}' eq "UnderNet") ? '/msg -server ${server} x@channels.undernet.org ban ${channel} *!*@' . $hostname . ' 100d 300 bye bye' : '/msg -server ${server} chanserv@services. akick ${channel} add *!*@' . $hostname . ' !P bye bye | Default ban');/cursor stop
 /key bindctxt mouse @item(buffer_nicklist):button1 /window 1;/query ${nick}
-/key bindctxt cursor @item(buffers):h /command -buffer ${full_name} irc /allchan -current buffer hide;/command -buffer ${full_name} irc /allpv -current buffer hide;/cursor stop
-/key bindctxt cursor @item(buffers):H /command -buffer ${full_name} irc /allchan -current buffer unhide;/command -buffer ${full_name} irc /allpv -current buffer unhide;/cursor stop
-
-
-# Others Keyboard shortcuts
-
-
-/key bind meta-meta2-A /bar scroll nicklist * -100%
-/key bind meta-meta2-B /bar scroll nicklist * +100%
-/key bind meta2-A /input history_global_previous
-/key bind meta2-B /input history_global_next
-
 
 # Alias
 
@@ -266,13 +291,5 @@
 /alias add beepon /trigger enable beep;/trigger enable beep_highlight;/trigger enable beep_pv;/trigger enable beep_notify_join;/trigger enable beep_notify_quit;/trigger
 /alias add slap /me slaps $1 around a bit with a large trout
 /alias add silence_pm /trigger toggle quakenet_undernet_pm;/allserv quote silence -*
-
-
-# Filters
-
-
-/set irc.look.smart_filter on
-/filter add irc_smart * irc_smart_filter *
-/filter add rt irc.BitlBee.#quebec * ^\[.*\]\sRT\s
 
 
