@@ -1,5 +1,10 @@
 weechat/sec.conf
 weechat/*.log
 weechat/logs/*
+weechat.linux/sec.conf
+weechat.linux/*.log
+weechat.linux/logs/*
+
+
 certs/*
 
